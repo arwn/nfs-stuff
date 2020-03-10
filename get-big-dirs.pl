@@ -5,6 +5,7 @@ use v5.30.1;
 
 use Scalar::Util qw(looks_like_number);
 use File::Find;
+use File::Spec;
 
 # user arguments
 my $usage = "usage: $0 base_dir depth max_directory_size_megs";
@@ -56,6 +57,7 @@ sub walkdirs {
     my $depth = shift;
     
     if ($depth == 0) {
+	$dir = File::Spec->canonpath($dir);
         my $sz = dirsize $dir;
 	if ($sz > $maxsize * 1024) {
 	    say OUTFILE $dir;

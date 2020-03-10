@@ -22,9 +22,21 @@ if (not -e $deletefile_old) {
     exit -1;
 }
 
+# all users who have had a big directory today and seven days ago
 my $common = `comm -1 -2 $deletefile $deletefile_old`;
+
+# whitelist into hash map
+open my $f, '<', 'whitelist.txt';
+chomp(my @lines = <$f>);
+close $f;
+my %whitelist = map { $_ => 1 } @lines;
+
 foreach my $d ($common) {
     chomp $d;
-    say "deleting $d";
-    `rm -rf $d`;
+    if ($whitelist{$d}) {
+	say "directory $d is on whitelist";
+    } else {
+	say "deleting $d";
+	`rm -rf $d`;
+    }
 }

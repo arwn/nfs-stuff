@@ -7,8 +7,9 @@ use Net::SMTP;
 use File::Basename;
 
 my $smtp = Net::SMTP->new('mail.42.us.org', Port => 25) or die "can't init smtp";
-$smtp->starttls or die $smtp->message();
-$smtp->auth('no-reply', '') or die $smtp->message();
+# we don't need authentication if we are on the nfs server
+#$smtp->starttls or die $smtp->message();
+#$smtp->auth('no-reply', '') or die $smtp->message();
 
 my $date = `date +"%d-%m-%y"`;chomp $date;
 
