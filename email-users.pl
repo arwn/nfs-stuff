@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use v5.30.1;
+use v5.20.1;
 
 use Net::SMTP;
 use File::Basename;

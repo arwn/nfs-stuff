@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use v5.30.1;
+use v5.20.1;
 
 use Scalar::Util qw(looks_like_number);
 use File::Find;

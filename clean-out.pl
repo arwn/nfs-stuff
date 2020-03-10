@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use v5.30.1;
+use v5.20.1;
 
 opendir(DIR, 'out') or die "out: no such directory";
 my %dates;
